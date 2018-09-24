@@ -1,0 +1,10 @@
+<div class="items">
+  <div class="item" *ngFor="let product of products">
+    <div class="title">{{product.name}}</div>
+    <div class="image center"><img src="{{product.imgUrl}}" alt=""></div>
+    <div class="description">{{product.description}}</div>
+    <div class="price">{{product.price}} {{product.dimension}}</div>
+    <button mat-raised-button (click)="openDialog(product)" class="to-basket">Open Dialog</button>
+  </div>
+
+</div>
