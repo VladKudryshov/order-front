@@ -113,7 +113,7 @@ li:hover >div{
 .footer {
   background: #39414E;
   width: 100%;
-  height: 100%;
+  height: 100px;
   grid-column: 1/3;
 }
 
@@ -123,6 +123,7 @@ li:hover >div{
   display: grid;
   grid-template-columns: 250px auto;
   grid-auto-rows: auto;
+  grid-gap: 20px;
 }
 
 .center{
