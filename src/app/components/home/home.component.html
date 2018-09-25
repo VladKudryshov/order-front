@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="header">
+    <div class="menu">
+      <ul>
+        <li>Продукты</li>
+        <li><a href="/admin">Админ</a></li>
+        <li>Контакты</li>
+        <li (mouseenter) ="viewDetailCart()" >
+          <div class="shopping-cart">
+            <i class="fas fa-shopping-cart card"></i>
+            <div class="quantity">3</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <filter></filter>
+  <products></products>
+  <div class="footer">
+
+  </div>
+</div>
+<table-component *ngIf="detailCart" (mouseleave)="closeDetailCart()"></table-component>

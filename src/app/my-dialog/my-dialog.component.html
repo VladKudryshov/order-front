@@ -1,9 +1,0 @@
-<div class="modal">
-  <div class="title">{{product.name}}</div>
-  <div class="price">{{product.price}} {{product.dimension}}</div>
-  <div class="description">{{product.description}}</div>
-  <input type="text" (keyup)="onKey($event)">
-  <div class="total-price">Total price: {{getTotalPrice()}}</div>
-  <button mat-raised-button class="right" (click)="onCloseCancel()">Cancel</button>
-  <button mat-raised-button class="left" (click)="onCloseConfirm()">To Cart</button>
-</div>

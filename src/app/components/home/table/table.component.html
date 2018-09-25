@@ -1,0 +1,26 @@
+
+<div class="order">
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Название</mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Цена</mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Масса</mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.quantity}} {{order.dimension}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="totalPrice">
+      <mat-header-cell *matHeaderCellDef> Итого</mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.totalPrice}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <button class="show-more">Вся корзина</button>
+</div>
+
+

@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import {Product} from '../model/product';
+import {Product} from '../../../model/product';
+import {FormatUtils} from '../../../utils/FormatUtils';
+import {LogicalUtils} from '../../../utils/LogicalUtils';
 
 @Component({
   selector: 'app-my-dialog',
@@ -11,6 +13,7 @@ import {Product} from '../model/product';
 export class MyDialogComponent implements OnInit {
 
   totalPrice: number;
+  currency = FormatUtils.currency;
 
   constructor(public thisDialogRef: MatDialogRef<MyDialogComponent>, @Inject(MAT_DIALOG_DATA) public product: Product) { }
 
@@ -31,11 +34,7 @@ export class MyDialogComponent implements OnInit {
   }
 
   getTotalPrice(){
-   return new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'BYN',
-      minimumFractionDigits: 2
-    }).format(this.getOrDefaultNumber())
+    return FormatUtils.currency(LogicalUtils.numberIsNull(this.totalPrice));
   }
 
   onKey(event){

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../model/product';
+import {Product} from '../../../model/product';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {MatDialog} from '@angular/material';
 import {MyDialogComponent} from '../my-dialog/my-dialog.component';
+import {FormatUtils} from '../../../utils/FormatUtils';
 
 @Component({
   selector: 'products',
@@ -12,6 +13,7 @@ import {MyDialogComponent} from '../my-dialog/my-dialog.component';
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
+  currency = FormatUtils.currency;
 
   constructor(private http: HttpClient, private dialog: MatDialog) {
   }

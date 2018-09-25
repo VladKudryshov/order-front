@@ -53,7 +53,6 @@ button{
   position: absolute;
   background: #FF5D49;
   width: 100px;
-  height: 35px;
   top: 30px;
   right: -50px;
   border-radius: 5px;
@@ -62,5 +61,5 @@ button{
   vertical-align: middle;
   font-weight: 700;
   color: #ffffff;
-  line-height: 35px;
+  line-height: 25px;
 }
