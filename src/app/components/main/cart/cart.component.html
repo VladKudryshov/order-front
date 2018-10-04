@@ -12,7 +12,7 @@
   <mat-horizontal-stepper linear #stepper class="stepper">
     <mat-step [stepControl]="firstFormGroup" [editable]="true">
       <ng-template matStepLabel>Change your products</ng-template>
-      <form [formGroup]="firstFormGroup">
+      <form >
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 center" style="width: 800px;">
 
           <!-- Checkbox Column -->
@@ -79,7 +79,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" [editable]="true">
-      <form [formGroup]="secondFormGroup">
+      <form >
         <ng-template matStepLabel>Fill out your address</ng-template>
         <mat-card class="order-meta">
           <mat-card>
