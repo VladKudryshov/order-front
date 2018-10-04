@@ -13,9 +13,10 @@ export class UserService {
 
   getUser(userId): Observable<Order[]> {
     const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'POST');
+    headers.append('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     headers.append('Access-Control-Allow-Origin', '*');
+    headers.append("Access-Control-Allow-Credentials", 'true');
     return this.http.post<Order[]>(this.serviceUrl,{userId: userId},{headers: headers});
   }
 
