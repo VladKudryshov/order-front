@@ -14,7 +14,6 @@ export class HomeComponent {
   }
 
   viewDetailCart() {
-    console.log("f")
     this.detailCart = true;
   }
 

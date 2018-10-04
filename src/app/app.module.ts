@@ -2,7 +2,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
+  MAT_CHECKBOX_CLICK_ACTION,
   MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
@@ -10,6 +13,7 @@ import {
   MatChipsModule,
   MatDatepickerModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatGridListModule,
   MatIconModule,
@@ -33,23 +37,31 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatTreeModule,
 } from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
-import {MyDialogComponent} from './components/home/my-dialog/my-dialog.component';
-import {ProductsComponent} from './components/home/products/products.component';
-import {FilterComponent} from './components/home/filter/filter.component';
-import {TableComponent} from './components/home/table/table.component';
-import {UserService} from './components/home/table/table.service';
+import {MyDialogComponent} from './components/main/my-dialog/my-dialog.component';
+import {ProductsComponent} from './components/main/products/products.component';
+import {FilterComponent} from './components/main/filter/filter.component';
+import {TableComponent} from './components/main/table/table.component';
+import {UserService} from './components/main/table/table.service';
 import {AdminComponent} from './components/admin/admin.component';
 import {RouterModule, Routes} from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-
+import { HomeComponent } from './components/main/home.component';
+import { OrderInfoComponent } from './components/admin/order-info/order-info.component';
+import { CartComponent } from './components/main/cart/cart.component';
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
 
 @NgModule({
   exports: [
+    CdkTableModule,
+    CdkTreeModule,
     MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -58,6 +70,7 @@ import { HomeComponent } from './components/home/home.component';
     MatStepperModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
@@ -80,13 +93,15 @@ import { HomeComponent } from './components/home/home.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatTreeModule,
     ]
 })
 export class DemoMaterialModule {}
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'cart', component: CartComponent }
 ];
 
 @NgModule({
@@ -97,7 +112,9 @@ const routes: Routes = [
     TableComponent,
     FilterComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    CartComponent,
+    OrderInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +129,9 @@ const routes: Routes = [
   entryComponents: [
     MyDialogComponent
   ],
-  providers: [UserService],
+  providers: [UserService,
+  {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
+],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })

@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="header">
+    <div class="menu">
+      <ul>
+        <li>Продукты</li>
+        <li><a href="/admin">Админ</a></li>
+        <li>Контакты</li>
+      </ul>
+    </div>
+  </div>
+
+  <mat-horizontal-stepper linear #stepper class="stepper">
+    <mat-step [stepControl]="firstFormGroup" [editable]="true">
+      <ng-template matStepLabel>Change your products</ng-template>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 center" style="width: 800px;">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Weight</th>
+            <td mat-cell *matCellDef="let element">
+              {{element.weight}} {{element.dimension}}
+            </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+
+          </ng-container>
+
+          <ng-container matColumnDef="totalPrice">
+            <th mat-header-cell *matHeaderCellDef> Price</th>
+            <td mat-cell *matCellDef="let element"> {{currency(element.totalPrice)}}</td>
+            <td mat-footer-cell *matFooterCellDef><b>{{getTotalCost()}}</b></td>
+          </ng-container>
+
+          <ng-container matColumnDef="action" class="right">
+            <th mat-header-cell *matHeaderCellDef> Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button class="btn-action btn-edit">
+                <mat-icon (click)="print(element.totalPrice)">edit</mat-icon>
+              </button>
+              <button mat-button class="btn-action btn-delete">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+      <div class="center">
+        <button mat-button class="btn-next-step" (click)="next(stepper)">Next</button>
+      </div>
+
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="true">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="secondCtrl" required>
+          <input matInput placeholder="Street" formControlName="secondCtrl" required>
+          <input matInput placeholder="House" formControlName="secondCtrl" required>
+          <input matInput placeholder="Flat" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious class="btn-back-step">Back</button>
+          <button mat-button matStepperNext class="btn-next-step">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious class="btn-back-step">Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
+  <div class="footer"></div>
+</div>

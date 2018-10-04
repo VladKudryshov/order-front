@@ -11,7 +11,14 @@
     <li class="panel-navigate">Statistics</li>
     <li class="panel-navigate">Settings</li>
   </div>
-  <div class="action"></div>
+  <div class="action">
+    <div class="orders">
+        <div class="order" *ngFor="let order of orderIds" (click)="print(order)">Order №{{order}}</div>
+    </div>
+    <order-info *ngIf="showDetails" [order] = "order" ></order-info>
+
+
+  </div>
   <div class="footer">
 
   </div>

@@ -1,0 +1,52 @@
+<div class="order-info">
+  <div class="title">
+    <h2>
+      Order №{{order}}
+    </h2>
+    <div class="user-meta">
+      <li><b>Name: </b>Name</li>
+      <li><b>Email: </b>kudr9tov@gmail.com</li>
+      <li><b>Phone: </b>+375 (33) 657-37-28</li>
+    </div>
+    <div class="address-meta">
+      <li><b>City:</b> Hrodno</li>
+      <li><b>Street:</b> Suv</li>
+      <li><b>House:</b> 306</li>
+      <li><b>Flat:</b> 86</li>
+    </div>
+  </div>
+  <h2>Products</h2>
+  <div class="products-table">
+    <div class="product-row">
+      <div class="id">№</div>
+      <div class="product">Product name</div>
+      <div class="weight">Weight</div>
+      <div class="weight">SALE</div>
+      <div class="total-price">Price</div>
+    </div>
+    <div class="product-row" *ngFor="let product of bookingProducts;  let index = index">
+      <div class="id">{{index+1}}</div>
+      <div class="product">{{product["name"]}}</div>
+      <div class="weight">{{product["weight"]}} {{product["dimension"]}}</div>
+      <div class="weight">0%</div>
+      <div class="total-price">{{currency(product["totalPrice"])}}</div>
+    </div>
+  </div>
+  <div class="summary">
+    <table>
+      <tr>
+        <td>Sale:</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Delivery:</td>
+        <td>{{currency(12)}}</td>
+      </tr>
+      <tr>
+        <td>Summary:</td>
+        <td>{{getTotalPrice()}}</td>
+      </tr>
+    </table>
+  </div>
+  <button class="approve-order">Approve</button>
+</div>

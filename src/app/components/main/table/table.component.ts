@@ -3,6 +3,7 @@ import {UserService} from './table.service';
 import {DataSource} from '@angular/cdk/table';
 import {Order} from '../../../model/order';
 import {Observable} from 'rxjs/internal/Observable';
+import {FormatUtils} from '../../../utils/FormatUtils';
 
 
 @Component({
@@ -13,6 +14,7 @@ import {Observable} from 'rxjs/internal/Observable';
 export class TableComponent {
   dataSource = new UserDataSource(this.userService);
   displayedColumns = ['name','price', 'quantity',  'totalPrice'];
+  currency = FormatUtils.currency;
   constructor(private userService: UserService) { }
 
 }
@@ -23,7 +25,7 @@ export class UserDataSource extends DataSource<any> {
     super();
   }
   connect(): Observable<Order[]> {
-    return this.userService.getUser();
+    return this.userService.getUser("1");
   }
   disconnect() {}
 }

@@ -6,6 +6,12 @@
   outline: none;
 }
 
+
+html {
+  font-family: 'Fira Sans Extra Condensed', sans-serif !important;
+
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -69,11 +75,11 @@ ul{
   border-radius: 5px;
 }
 
-li:hover{
+.menu > li:hover{
   background: #202534;
   text-shadow: 2px 2px 2px #000000;
 }
-li:hover >div{
+.menu > li:hover >div{
   display: block;
 }
 
@@ -128,6 +134,7 @@ li:hover >div{
 
 .center{
   text-align: center;
+  overflow: hidden;
   margin: 0px auto;
 }
 

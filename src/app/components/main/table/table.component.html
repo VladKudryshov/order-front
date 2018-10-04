@@ -1,5 +1,5 @@
 
-<div class="order">
+<div class="basket">
   <mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Название</mat-header-cell>
@@ -7,7 +7,7 @@
     </ng-container>
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef> Цена</mat-header-cell>
-      <mat-cell *matCellDef="let order"> {{order.price}}</mat-cell>
+      <mat-cell *matCellDef="let order"> {{currency(order.price)}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="quantity">
       <mat-header-cell *matHeaderCellDef> Масса</mat-header-cell>
@@ -15,12 +15,12 @@
     </ng-container>
     <ng-container matColumnDef="totalPrice">
       <mat-header-cell *matHeaderCellDef> Итого</mat-header-cell>
-      <mat-cell *matCellDef="let order"> {{order.totalPrice}}</mat-cell>
+      <mat-cell *matCellDef="let order"> {{currency(order.totalPrice)}}</mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <button class="show-more">Вся корзина</button>
+  <button class="show-more" >Вся корзина</button>
 </div>
 
 

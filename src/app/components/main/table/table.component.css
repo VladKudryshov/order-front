@@ -2,7 +2,7 @@ table {
   width: 100px;
 }
 
-.order {
+.basket {
   width: 500px;
   position: absolute;
   top: 85px;
@@ -10,7 +10,7 @@ table {
   box-shadow: 1px 1px 30px 1px #000000;
 }
 
-.order:before{
+.basket:before{
   content: '';
   position: absolute;
   right: 0px;
