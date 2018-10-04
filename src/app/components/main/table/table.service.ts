@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/internal/Observable';
 @Injectable()
 export class UserService {
 
-  private serviceUrl = 'http://products-order.herokuapp.com/orders/current';
+  private serviceUrl = 'https://products-order.herokuapp.com/orders/current';
 
   constructor(private http: HttpClient) {
   }

@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
     this.http
-      .post('http://products-order.herokuapp.com/orders', {orderId: "000002"}, {headers: headers})
+      .post('https://products-order.herokuapp.com/orders', {orderId: "000002"}, {headers: headers})
       .subscribe((data: tableProduct[]) => {
         this.bookingProducts = data;
         this.dataSource = new MatTableDataSource<tableProduct>(this.bookingProducts);

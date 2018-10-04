@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
     this.http
-      .get('http://products-order.herokuapp.com/orders', {headers: headers})
+      .get('https://products-order.herokuapp.com/orders', {headers: headers})
       .subscribe((data: string[]) => {
         this.orderIds = data;
         console.log(data)
