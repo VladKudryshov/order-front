@@ -66,3 +66,18 @@ div{
 }
 
 
+.input-field-user{
+  display: block;
+  width: 200px;
+}
+
+.card{
+  height: 100%;
+}
+
+.order-meta{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+

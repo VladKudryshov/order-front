@@ -41,7 +41,7 @@ a{
   padding: 10px;
 }
 
-.card{
+.cart{
   color: #fff;
   font-size: 20px;
   text-shadow: 2px 2px 2px #000000;
@@ -133,9 +133,8 @@ ul{
 }
 
 .center{
-  text-align: center;
   overflow: hidden;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 
