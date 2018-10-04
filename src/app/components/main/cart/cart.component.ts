@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
 
     const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    headers.append('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,application/json');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append("Access-Control-Allow-Credentials", 'true');
