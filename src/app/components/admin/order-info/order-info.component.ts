@@ -28,7 +28,7 @@ export class OrderInfoComponent implements OnInit, OnChanges {
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
     this.http
-      .post('http://localhost:8080/orders', {orderId: this.order}, {headers: headers})
+      .post('http://products-order.herokuapp.com/orders', {orderId: this.order}, {headers: headers})
       .subscribe((data: Object[]) => {
         this.bookingProducts = data;
       });

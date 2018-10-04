@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
     this.http
-      .get('http://localhost:8080/product', {headers: headers})
+      .get('http://products-order.herokuapp.com/product', {headers: headers})
       .subscribe((data: Product[]) => {
         this.products = data;
       });
