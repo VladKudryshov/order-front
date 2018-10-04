@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/compiler": "^6.1.8",
     "@angular/compiler-cli": "^6.1.8",
     "@angular/core": "^6.1.8",
+
     "@angular/forms": "^6.1.8",
     "@angular/http": "^6.1.8",
     "@angular/language-service": "^6.1.8",
