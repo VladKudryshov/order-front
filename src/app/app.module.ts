@@ -1,5 +1,5 @@
 import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {APP_ID, Inject, NgModule, PLATFORM_ID} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MAT_CHECKBOX_CLICK_ACTION,
@@ -54,6 +54,8 @@ import { OrderInfoComponent } from './components/admin/order-info/order-info.com
 import { CartComponent } from './components/main/cart/cart.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import {isPlatformBrowser} from '@angular/common';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   exports: [
@@ -98,13 +100,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 })
 export class DemoMaterialModule {}
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'cart', component: CartComponent }
-];
-
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
     MyDialogComponent,
@@ -117,22 +113,31 @@ const routes: Routes = [
     OrderInfoComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({
+      appId: 'ng-universal-demystified'
+    }),
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   entryComponents: [
     MyDialogComponent
   ],
-  providers: [UserService,
-  {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
-],
+  providers: [UserService],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(APP_ID) private appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+      'in the browser' : 'on the server';
+    console.log(`Running ${platform} with appId=${appId}`);
+  }
+}
